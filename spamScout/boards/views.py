@@ -5,9 +5,10 @@ from boards.models import *
 from django.views.decorators.csrf import csrf_exempt
 import facebook
 import json
+from py2neo import Graph, Node, Relationship, authenticate
 
 #user_access_token
-token="EAACEdEose0cBAH9PGHosKww8SArVtsxsFQQnDO4rZBcKBzSigXVy8GWoMkQId7h4svtdy6ANibATJPSHDDZCewgGcojwGl0ELX0gZCQZAMmx2rLOsTrwl5DrhPmcdZAuAzxS3lzoMljLqPH5Emb7fINl0Uxn0rnZAYvixZAtOujoDWGT3UMRo4OB2BxIM1n1FQZD"
+token="EAACEdEose0cBAAMqpl0oh1Ne58w11uxMDqsFIm8TZCPZBejYFI0GsD5ZBDmKJwnDL8E2IrEJqHYRwEDI5GhhkOS4gNJcOfFZA6sVbnwGtWCqRv6DL7oFtgXSHEyyDK588h0yro901POYN1IScZANMYW0tPxOwqcR2oauqo63hVZAXphHdhE80yg4CwN9iglQsZD"
 graph = facebook.GraphAPI(access_token= token, version="2.11")
 
 #this will return a dictionary of friends
@@ -16,14 +17,12 @@ friendList = friends['data']
 print(type(friendList))
 print(friendList[0].keys())  
  
-#friends = graph.get_object("me/friends")
-#write in trusted circle list
-#graph.put_object
 
 @csrf_exempt
 def home(request):
-#    template = loader.get_template('index.html')
-#    return HttpResponse(template.render())\
+ if request.user.authenticate():
+     #returns a node instance and creates if does not exits
+     self = graph_db.get_or_create_indexed_node("me","fb_id","0")
      if request.method == 'POST':
          print(request.POST.keys())
          try:
@@ -37,4 +36,5 @@ def home(request):
 
      elif request.method == 'GET':
         return HttpResponse(json.dumps(friendList))
+
 
