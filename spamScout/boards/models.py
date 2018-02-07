@@ -12,40 +12,13 @@ from django.dispatch import receiver
 import facebook
 import json
 
+
+class Spam(models.Model):
+  domain = models.CharField(max_length=30, unique=True)
+
+
 class CustomUser(models.Model):
-  user = models.OneToOne(User)
+  user = models.OneToOneField(User)
   fb_id = models.CharField(max_length=30)
-  spam_list = models.OneToMany(Spams)
+  spam_list = models.ManyToManyField(Spam)
   fb_token = models.CharField(max_length=500)
-
-
-class CurrentList(models.Model):
-  key = models.IntegerField(default="0")
-  name = models.CharField(max_length=30)
-
-  def __str__(self):
-    return self.name
-
-
-class Spam(models.Model)
-  domain = models.UUIDField(default=uuid.uuid4) 
-
-
-"""
-@receiver(post_save, sender=CurrentList)
-def current(sender, instance, **kwargs):
-    
-    if instance is not None:
-       graph = neo4j.Graph('http://localhost:7474/db/data')
-       query = '''
-       CREATE (n:CurrentList {name: {name}})
-       '''
-       graph.cypher.execute(query, name=instance.name)
-
-#class Trustlist(models.Model):
-#      key = models.IntegerField(default="0")
-#      name = models.CharField(max_length=30)
-
-#      def __str__(self):
-#          return self.name
-"""
