@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+ <!-- Latest compiled and minified CSS -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+ <!-- jQuery library -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+ <!-- Latest compiled JavaScript -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+ <title>Spam-scout</title>
+
+</head>
+
+<body style="background-color: #f2f2f2;">
+
+  <div id="fb-root"></div>
+
+  <script type="text/javaScript">
+
+     
+
+
+    function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    var d = new Date();
+    d.setTime(d.getTime() + (1*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie="accessToken =" + response.authResponse.accessToken +";"
+    document.cookie="userID =" + response.authResponse.userID +";"
+    document.cookie="username=apoorv;"
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+
+      var ele =document.getElementById("fb_btn");
+
+      if (response.status === 'connected') {
+      
+        ele.style.display="hidden";
+        testAPI();  
+        }
+        else
+        ele.style.display="none";
+
+    
+    
+  }
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : 587155681632347,
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.12',
+      });
+      
+      FB.AppEvents.logPageView();  
+
+
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response); 
+      }); 
+
+    };
+
+      function checkLoginState() {
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
+      }
+
+    (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+      function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+    FB.api('/me', function(response) {
+      console.log('Successful login for: ' + response.name);
+      console.log(('status').innerHTML =
+        'Thanks for logging in, ' + response.name + '!') ;
+    });
+
+  }
+  
+ </script>
+
+
+ <nav class="navbar navbar-inverse navbar-fixed-top" style="box-shadow: 0px 3px 10px 2px #a6a6a6;">
+  
+  <div class="container-fluid" style="margin-left: 25vw; z-index: 5px; ">
+
+    <div class="container-fluid">
+      <img src="1.png" width="40px" height="40px" style="margin-top: 5px;">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="margin-right: 5vw;">Spam-Scout</a>
+      </div>
+      <ul class="nav navbar-nav" style="margin-right: 5vw;">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Help</a></li>
+
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid" style=" height:100vh; width: 60vw;  background-color: #ffffff; box-shadow: 3px 0px 10px 2px #a6a6a6 , -3px 0px 10px 2px #a6a6a6;; padding-top: 5vh;">
+      <div style="float: right; display: block;">
+      <h3 style="float: right; margin-top: 10vh; margin-right: 0vw; width: 25vw;" >
+        Spam-Scout 
+        Spam-Scout provides you safer experience as you surf on the internet. 
+        It makes identifying Spam and Phishing website seamingly easy.
+      </h3>
+    </div>
+    <div class="container-fluid" style="margin-top: 5vh;">
+     
+      <img src="4.svg" width="128px" height="128px" style="margin-left: 2vw; margin-top: -10vh;">
+
+      <img src="5.svg" style="margin-top:18vh; margin-left: -7vh; z-index: -20px; height: 128px; width: 128px; ">
+      <img src="3.svg" style="margin-top:0vh; margin-left: 0vh; height:128px; width: 128px; z-index: 10px; ">
+      
+      <div id = "fb_btns" class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" style=" margin-bottom: 0vh; float: right; margin-left: 50vw; margin-right: 5vw;"></div>
+
+    </div>
+   
+
+</div>
+
+
+
+ </body>

@@ -3,7 +3,7 @@ element = document.getElementById("myBtn")
 if (element){
 element.addEventListener("click", displayDate);
 function displayDate() {
-chrome.tabs.create({url: "https://www.facebook.com/"})
+chrome.tabs.create({url: })
    }
 }
 else
