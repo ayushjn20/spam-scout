@@ -4,7 +4,7 @@ Not having the right tools in place. So, here it is a web-extension used for det
 It is an effort for the betterment of society, an effort for providing a secure platform.
 
 ## Build Process
-- Download project directory from ""
+- Download project directory from "ayushjn20.pythonanywhere.com"
 - Include it in chrome browser
 - Login to the extension
 - Create your own Trust Circle to get your spam scout started in order to protect you from various cyber threats.
