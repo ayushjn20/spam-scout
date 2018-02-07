@@ -1,6 +1,6 @@
 # spam-scout
-The one mistake companies make that leaves them vulnerable to phishing attacks is....
-Not having the right tools in place and failing to train employees on their role in information security.So, here it is a web-extension used for detecting and reporting phishing websites, based on person's community connections. Here, we have used Facebook Graph API for creating a person's community. From this community a person can choose people to create which is know as the 'Trust Circle'. Based on these connections and their reports the user will be informed about the various phising threats.
+The one mistake companies make that leaves them vulnerable to phishing attacks is....  
+Not having the right tools in place. So, here it is a web-extension used for detecting and reporting phishing websites, based on person's community connections. Here, we have used Facebook Graph API for creating a person's community. From this community a person can choose people to create which is know as the 'Trust Circle'. Based on these connections and their reports the user will be informed about the various phising threats.
 It is an effort for the betterment of society, an effort for providing a secure platform.
 
 ## Build Process
